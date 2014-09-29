@@ -16,9 +16,9 @@ Next, you must download [Google Course Builder, Python 2.X and AppEngine].
 
 Once you've done it, proceed to **deployment**. Open the AppEngine, drag and drop the folder of your Course Builder version, that's all.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![Drag app](https://github.com/Domofera/Domofera_MOOC/blob/master/src/docu/img/drag_app.jpg "Drag app")
 
-Now you only have to 
+Now you only have to click the "Play" button. Now it's running in your machine. Click the "Browse" button and a browser will open to show your app.
 
 
 
