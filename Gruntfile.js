@@ -14,10 +14,10 @@ module.exports = function(grunt) {
         
         clean: {
             build: {
-                //src: [ 'Domofera_MOOC' ]
+                src: [ 'Domofera_MOOC' ]
             },
             stylesheets: {
-                src: [ 'Domofera_MOOC/assets/css/*.{css,less}', '!Domofera_MOOC/assets/css/main.css' ]  // borra todos los css excepto style.css
+                src: [ 'Domofera_MOOC/assets/css/*.{css,less}', 'Domofera_MOOC/assets/css/others', '!Domofera_MOOC/assets/css/main.css' ]  // borra todos los css excepto main.css
             },
             scripts: {
                 //src: [ 'build/js/*.js', '!build/js/main.js' ]           // borra todos los js excepto main.js
@@ -28,13 +28,13 @@ module.exports = function(grunt) {
         less: {
             build_less:{
                 options: {
-                    cleancss: true
+                    cleancss: true // cambiar a true para Produccion
                 },
                 files: [
                     {
                         expand: true,
-                        cwd: 'src/assets/css',
-                        src: ['*.less'],
+                        cwd: 'src/assets/css/',
+                        src: ['*.less', 'others/*.less'],
                         dest: 'Domofera_MOOC/assets/css',
                         ext: '.css'
                     }
@@ -52,7 +52,8 @@ module.exports = function(grunt) {
         cssmin: {
             build: {
                 files: {
-                    'Domofera_MOOC/assets/css/main.css': [ 'Domofera_MOOC/assets/css/*.css' ]
+                    //'Domofera_MOOC/assets/css/main.css': [ 'Domofera_MOOC/assets/css/*.css' ]
+                    'Domofera_MOOC/assets/css/main.css': [ 'Domofera_MOOC/assets/css/others/reset.css', 'Domofera_MOOC/assets/css/others/previo.css', 'Domofera_MOOC/assets/css/main.css', 'Domofera_MOOC/assets/css/responsive.css' ]
                 }
             }
         },
@@ -82,9 +83,9 @@ module.exports = function(grunt) {
     
     
     // define the tasks
-    grunt.registerTask('estilos', [ 'less:build_less', 'autoprefixer', 'cssmin' ]);
+    grunt.registerTask('estilos', [ 'less:build_less', 'autoprefixer', 'cssmin', 'clean:stylesheets' ]);
    // grunt.registerTask('scripts', [ 'uglify', 'clean:scripts' ]);
-    grunt.registerTask('compilar', ['copy', 'estilos', 'clean' /*, 'scripts'*/ ]);
+    grunt.registerTask('compilar', [ 'clean:build' , 'copy' , 'estilos']);
     
     grunt.registerTask('default', [ 'compilar']); // esta se puede llamar solo con escribir "grunt" en consola
 };

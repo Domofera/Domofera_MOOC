@@ -27,15 +27,15 @@
 
 institution:
   # Name of your institution
-  name: 'Add Your Institution Here'
+  name: 'Domofera'
 
   # URL of your institution's webpage
-  url: 'LINK_TO_YOUR_INSTITUTION_HERE'
+  url: 'https://github.com/Domofera/Domofera_MOOC'
 
   # Link and alt text for the logo of the course or your institution
   logo:
-    url: 'assets/img/your_logo_here.png'
-    alt_text: YOUR_LOGO_HERE
+    url: 'assets/img/logo.png'
+    alt_text: Domofera
 
 
 ####################
@@ -61,8 +61,8 @@ base:
     <li class="gcb-pull-right">
       <form class="gcb-search-form" action="search" method="get">
         <input class="gcb-search-box" name="query" type="text"
-               aria-label="Enter a search term">
-        <input value="Search"
+               aria-label="Termino de búsqueda...">
+        <input value="Buscar..."
             class="gcb-button gcb-search-button" type="submit">
       </form>
     </li>'
@@ -74,11 +74,11 @@ base:
   show_gplus_button: True
 
   # Header phrase for the main navigation bar
-  nav_header: 'Search Education'
+  nav_header: 'Domofera'
 
   # Link to your privacy policy and terms of service
   privacy_terms_url: 'PRIVACY_POLICY_AND_TERMS_OF_SERVICE'
 
   # Locale for internationalization of explorer pages. See
   # modules/i18n/resources/locale for available locales.
-  locale: 'en_US'
+  locale: 'es'
