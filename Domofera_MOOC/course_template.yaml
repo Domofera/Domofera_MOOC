@@ -50,7 +50,7 @@ base:
   #     https://code.google.com/p/course-builder/wiki/ReachAndEngagementMetrics.
   #
   # for details.
-  before_head_tag_ends: '<!-- base.before_head_tag_ends -->'
+  before_head_tag_ends: '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">'
   after_body_tag_begins: '<!-- base.after_body_tag_begins -->'
   after_navbar_begins: '<!-- base.after_navbar_begins -->'
   before_navbar_ends: '<!-- base.before_navbar_ends -->
