@@ -20,7 +20,7 @@ Next, you must download [Google Course Builder, Python 2.X and AppEngine].
 
 Once you've done it, we can launch it. Open the AppEngine, drag and drop the folder of your Course Builder version, that's all.
 
-![Drag app](https://github.com/Domofera/Domofera_MOOC/blob/master/src/docu/img/drag_app.jpg "Drag app")
+![Drag app](https://github.com/Domofera/Domofera_MOOC/blob/master/Domofera_MOOC/docu/img/drag_app.jpg "Drag app")
 
 Now you only have to click the "Run" button. Now it's running in your machine. Click the "Browse" button and a browser will open to show your app.
 
@@ -64,7 +64,7 @@ At this point, we can do our first steps in customizing:
 
 Now we have our website with some customizations. If we run the project, we'll see the general content changes we've done.
 
-![Changes](https://github.com/Domofera/Domofera_MOOC/blob/master/src/docu/img/mooc_v0.01_01.jpg "General changes")
+![Changes](https://github.com/Domofera/Domofera_MOOC/blob/master/Domofera_MOOC/docu/img/mooc_v0.01_01.jpg "General changes")
 
 
 ### 1.5. Setting up the environment
@@ -92,7 +92,7 @@ It's important to emphasize that a **MOOC placed at the root URL is not editable
 
 If you have followed the previous link instructions, you are should have this two courses:
 
-![Courses](https://github.com/Domofera/Domofera_MOOC/blob/master/src/docu/img/courses.png "Courses")
+![Courses](https://github.com/Domofera/Domofera_MOOC/blob/master/Domofera_MOOC/docu/img/courses.png "Courses")
 
 Just in case, we don't want 2 duplicates courses, so for the old, open the ***course.yaml*** and change these two variables to false:
 ```python
@@ -145,4 +145,4 @@ will change into:
 
 My attempt is to have a **responsive design**, so I've added css code (actually is .less but compiled into .css). The final result of *jumbotron* is this:
 
-![Jumbotron](https://github.com/Domofera/Domofera_MOOC/blob/master/src/docu/img/jumbotron.jpg "Jumbotron")
+![Jumbotron](https://github.com/Domofera/Domofera_MOOC/blob/master/Domofera_MOOC/docu/img/jumbotron.jpg "Jumbotron")
