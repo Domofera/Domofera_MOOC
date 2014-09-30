@@ -29,28 +29,29 @@ course:
   admin_user_emails: ''
 
   # Course title
-  title: 'Aprende a cultivar tu huerto urbano con Domofera'
+  title: 'Power Searching with Google'
 
   # Main page blurb. (The '|' at the beginning enables multi-line input.)
   blurb: |
-    Aprenderás a crear y mantener tu propio huerto mediante los recursos
-    que te proporcionamos, que paso a paso van a hacer de ti todo un agricultor.
+    Google Search makes it amazingly easy to find information. Come learn about
+    the powerful advanced tools we provide to help you find just the right
+    information when the stakes are high.
 
   # Information about the instructor to display on the main page.
-  instructor_details: 'Mr Cañisares <br> <b>Agricultor de lujo</b> <br> Totana, Murcia'
+  instructor_details: 'Daniel Russell <br> Senior Research Scientist <br> Google, Inc.'
 
   # You can choose whether you want a video or an image on the main page.
   # If you specify both a video and an image link, then the video will take
   # priority. The image alt text allows the image to be understood by text-only
   # screen readers.
   main_video:
-    url: https://www.youtube.com/embed/iM4psg9QOnk 
+    url: https://www.youtube.com/embed/Kdg2drcUjYI?rel=0
   main_image:
     url: /assets/img/banner1.png
     alt_text: Photo of Dan Russell
 
   # Course start date.
-  start_date: 'Diciembre 10, 2014'
+  start_date: 'July 10, 2012'
 
   # Forum URL. For details, see
   #
@@ -72,14 +73,14 @@ course:
 
   # Locale for internationalization. See modules/i18n/resources/locale for
   # available locales.
-  locale: 'es'
+  locale: 'en_US'
 
   # Whether the course is open to the students.
-  now_available: false
+  now_available: true
 
   # Whether the course material can be accessed without requiring users to log
   # in or register.
-  browsable: false
+  browsable: true
 
   # Google Analytics tag: Fill this in with a value obtained by signing up
   # at http://www.google.com/analytics.  Note that you may wish instead to

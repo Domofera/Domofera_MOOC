@@ -90,7 +90,7 @@ For that, we can locate this part in the **views** folder. Exactly, in **base_co
  
 It's important to emphasize that a **MOOC placed at the root URL is not editable online**. Maybe you want to do other courses, but if not, you have to [Switch your URL](https://code.google.com/p/course-builder/wiki/FAQ#How_do_I_make_my_root_course_editable_through_the_browser?).
 
-If you have followed the previous link instructions, you are should have this two courses:
+Do it in your **LOCALHOST and in REMOTE (your-name-app.appspot.com)**, because the deployment won't do it automatically. If you have followed the previous link instructions, you are should have this two courses:
 
 ![Courses](https://github.com/Domofera/Domofera_MOOC/blob/master/Domofera_MOOC/docu/img/courses.png "Courses")
 

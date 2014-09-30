@@ -23,34 +23,26 @@
 .qt-question-item {
   margin: 20px 0;
 }
-
 .qt-feedback {
   width: 600px;
 }
-
 .qt-hidden {
   display: none !important;
 }
-
 div.qt-warning {
   border: solid 1px #000;
   padding: 4px;
   background-color: #ffffb7;
   color: #f00;
 }
-
-.qt-hint,
-.qt-check-answer {
+.qt-hint, .qt-check-answer {
   display: inline-block;
   margin: 10px 0;
 }
-
 .qt-points {
   float: right;
 }
 
-.qt-grade-scored-lesson,
-.qt-grade-report,
-.qt-grade-assessment {
+.qt-grade-scored-lesson, .qt-grade-report, .qt-grade-assessment {
   margin-bottom: 10px;
 }

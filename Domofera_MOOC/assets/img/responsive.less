@@ -1,0 +1,21 @@
+//********* MIXINS *******//
+@import url("mixins.less");
+
+
+//********************************** TABLET
+@media (max-width: @tam-tablet)
+{
+    div[class^="gcb-col-"], aside[class^="gcb-col-"]{
+        width: 100%;
+        float: none;
+    }
+
+    .jumbotron{
+
+        .gcb-bio-headers{
+            float:none;
+            text-align: center;
+        }
+    }
+
+}
