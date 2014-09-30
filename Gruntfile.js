@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     // configure the tasks
     grunt.initConfig({
 
-        copy: {
+       /* copy: {
             build: {
                 cwd: 'src',
                 src: [ '**', '!src/assets/css/*.less' ], // no copia los .less y los .jade
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
             scripts: {
                 //src: [ 'build/js/*.js', '!build/js/main.js' ]           // borra todos los js excepto main.js
             },
-        },
+        },*/
         
         // estilos
         less: {
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'src/assets/css/',
+                        cwd: 'Domofera_MOOC/assets/css/',
                         src: ['*.less', 'others/*.less'],
                         dest: 'Domofera_MOOC/assets/css',
                         ext: '.css'
@@ -83,9 +83,9 @@ module.exports = function(grunt) {
     
     
     // define the tasks
-    grunt.registerTask('estilos', [ 'less:build_less', 'autoprefixer', 'cssmin', 'clean:stylesheets' ]);
+    grunt.registerTask('estilos', [ 'less:build_less', 'autoprefixer', 'cssmin' ]); //, 'clean:stylesheets'
    // grunt.registerTask('scripts', [ 'uglify', 'clean:scripts' ]);
-    grunt.registerTask('compilar', [ 'clean:build' , 'copy' , 'estilos']);
+    grunt.registerTask('compilar', [ 'estilos']); // 'clean:build' , 'copy' ,
     
     grunt.registerTask('default', [ 'compilar']); // esta se puede llamar solo con escribir "grunt" en consola
 };

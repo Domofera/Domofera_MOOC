@@ -75,11 +75,11 @@ course:
   locale: 'es'
 
   # Whether the course is open to the students.
-  now_available: true
+  now_available: false
 
   # Whether the course material can be accessed without requiring users to log
   # in or register.
-  browsable: true
+  browsable: false
 
   # Google Analytics tag: Fill this in with a value obtained by signing up
   # at http://www.google.com/analytics.  Note that you may wish instead to

@@ -237,8 +237,8 @@
 
     <!-- top section -->
     <div class="is-wrapper">
+      {% block top_content %}{% endblock %}
       <div class="gcb-aux">
-        {% block top_content %}{% endblock %}
         {{course_info.base.after_top_content_ends | safe}}
 
         <!-- main section -->
