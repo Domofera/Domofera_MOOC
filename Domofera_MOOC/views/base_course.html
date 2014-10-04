@@ -12,74 +12,87 @@
 {% block assets %}
   <link rel="icon" href="assets/img/favicon.ico" />
   <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+  
 
   <!-- jQuery should be imported first -->
   <script src="assets/lib/jquery-1.7.2.min.js"></script>
-
   <script src="assets/lib/activity-generic-1.3.js"></script>
-
   <script src="assets/lib/butterbar.js"></script>
+  <script src="assets/lib/bootstrap.min.js"></script>
 {% endblock %}
 
 {% block navbar %}
-  <!-- nav bar -->
-  <div class="gcb-nav gcb-complex" id="gcb-nav-x">
-    <div class="gcb-aux">
-      <ul>
+<!-- nav bar gcb-nav gcb-complex-->
+<nav id="gcb-nav-x" class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#d-inner-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand visible-xs-inline" href="#">Menu</a>
+        </div>
+        
+        <div id="d-inner-nav" class="gcb-aux collapse navbar-collapse">
+            <ul class="nav navbar-nav">
 
-        <!-- left-aligned links in order -->
-        {{course_info.base.after_navbar_begins | safe}}
-        <li {% if navbar.announcements %}class='active'{% endif %}>
-          {# I18N: Navbar tab. #}
-          <a href="announcements">{{ gettext('Announcements') }}</a>
-        </li>
-        <li {% if navbar.course %}class='active'{% endif %}>
-          {# I18N: Navbar tab. #}
-          <a href="course">{{ gettext('Course') }}</a>
-        </li>
-        {% if course_info.course.forum_embed_url %}
-          <li {% if navbar.forum %}class='active'{% endif %}>
-            {# I18N: Navbar tab. #}
-            <a href="forum">{{ gettext('Forum') }}</a>
-          </li>
-        {% endif %}
-
-        <!-- right-aligned links are in order -->
-        {% if is_super_admin %}
-          <li class="gcb-pull-right">
-            <a href="/admin">Admin</a>
-          </li>
-        {% endif %}
-        {% if is_course_admin %}
-          <li class="gcb-pull-right">
-            <a href="dashboard">Dashboard</a>
-          </li>
-        {% endif %}
-        {% if show_course_explorer_tab and logoutUrl %}
-          <li class="gcb-pull-right">
-            {# I18N: Navbar tab. #}
-            <a href="/explorer/courses">{{ gettext('My Courses') }}</a>
-          </li>
-          {% if has_global_profile %}
-            <li class="gcb-pull-right">
+            <!-- left-aligned links in order -->
+            {{course_info.base.after_navbar_begins | safe}}
+            <li {% if navbar.announcements %}class='active'{% endif %}>
               {# I18N: Navbar tab. #}
-              <a href="/explorer/profile">{{ gettext('Profile') }}</a>
+              <a href="announcements">{{ gettext('Announcements') }}</a>
             </li>
-          {% endif %}
-        {% endif %}
-        {% if not transient_student %}
-          <li {% if navbar.progress %}class='active'{% endif %}>
-            {# I18N: Navbar tab. #}
-            <a href="student/home">{{ gettext('Progress') }}</a>
-          </li>
-        {% else %}
-          <li {% if navbar.registration %}class='active'{% endif %}>
-            {# I18N: Navbar tab. #}
-            <a href="register">{{ gettext('Registration') }}</a>
-          </li>
-        {% endif %}
-        {{course_info.base.before_navbar_ends | safe}}
-      </ul>
+            <li {% if navbar.course %}class='active'{% endif %}>
+              {# I18N: Navbar tab. #}
+              <a href="course">{{ gettext('Course') }}</a>
+            </li>
+            {% if course_info.course.forum_embed_url %}
+              <li {% if navbar.forum %}class='active'{% endif %}>
+                {# I18N: Navbar tab. #}
+                <a href="forum">{{ gettext('Forum') }}</a>
+              </li>
+            {% endif %}
+
+            <!-- right-aligned links are in order -->
+            {% if is_super_admin %}
+              <li class="gcb-pull-right">
+                <a href="/admin">Admin</a>
+              </li>
+            {% endif %}
+            {% if is_course_admin %}
+              <li class="gcb-pull-right">
+                <a href="dashboard">Dashboard</a>
+              </li>
+            {% endif %}
+            {% if show_course_explorer_tab and logoutUrl %}
+              <li class="gcb-pull-right">
+                {# I18N: Navbar tab. #}
+                <a href="/explorer/courses">{{ gettext('My Courses') }}</a>
+              </li>
+              {% if has_global_profile %}
+                <li class="gcb-pull-right">
+                  {# I18N: Navbar tab. #}
+                  <a href="/explorer/profile">{{ gettext('Profile') }}</a>
+                </li>
+              {% endif %}
+            {% endif %}
+            {% if not transient_student %}
+              <li {% if navbar.progress %}class='active'{% endif %}>
+                {# I18N: Navbar tab. #}
+                <a href="student/home">{{ gettext('Progress') }}</a>
+              </li>
+            {% else %}
+              <li {% if navbar.registration %}class='active'{% endif %}>
+                {# I18N: Navbar tab. #}
+                <a href="register">{{ gettext('Registration') }}</a>
+              </li>
+            {% endif %}
+            {{course_info.base.before_navbar_ends | safe}}
+          </ul>
+        </div>
     </div>
-  </div>
+  </nav>
 {% endblock %}

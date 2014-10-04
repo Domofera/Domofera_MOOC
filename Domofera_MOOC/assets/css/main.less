@@ -2,13 +2,17 @@
 @import url("mixins.less");
 
 
+
+
+
+
 // **********  GENERAL   *************/
+
 .gcb-cols{
     display: block;
     width: 100%;
     margin: 0 auto;
 }
-
 
 .is-wrapper{
     //padding: 0 15px;
@@ -23,31 +27,98 @@
 
 //**************  HEADER  *****************/
 
+#gcb-header{
+    .gcb-aux{
+        max-width: 1160px;
+    }
+}
+
+.navbar-default
+{ 
+    @color-navbar: #0c96b6;
+    
+    background: @color-navbar;
+    border: none;
+    border-radius: 0;
+    
+    ul.nav{
+        width: 100%;
+    }
+    
+    .navbar-brand{
+        color: #fff;
+        height: auto;
+        cursor: default;
+        &:hover{
+            color: #eee;
+            text-decoration: none;
+        }
+    }
+    
+    .navbar-toggle{
+        border-color: #fff;
+        background: @color-navbar;
+        transition: all 0.3s ease;
+        
+        &:hover, &:focus{
+            background: multiply(@color-navbar, #ddd);
+        }
+        .icon-bar{
+            background-color: #fff;
+        }
+    } 
+    
+    .navbar-nav{ 
+        &>li>a{ 
+            .transition(0.3s);
+            &:hover, &:focus{
+                background-color: multiply(@color-navbar, #ddd);
+            }
+        }
+        
+        &>.active>a{
+            &, &:hover, &:focus{
+                color: #555;
+                background-color: multiply(@color-navbar, #ddd);
+                background-image: none;
+            }
+        }
+    }
+    
+    .form-control{
+        margin: 0;
+        height: auto;
+    }
+}
+
 .gcb-pull-right{
     line-height: 2.3;
 }
 
-
-.jumbotron{
+.spot{
     .bq-line;
     background: @cl-tortoise url("../img/fondo.jpg") no-repeat left top;
     background-size: cover;
     padding: 15px 15px 0 15px;
     color: white;
     text-shadow: #555 1px 1px 2px;
-    margin: -15px 0 0 -15px;
+    margin-left: -15px;
     box-shadow: #555 0 0 10px 1px inset;
 
     a.gcb-button-large{
         margin:0;
+        .bt;
+        .bt-xl;
+        .bt-color-todark(@cl-gray-darker);
     }
 
     .gcb-product-headers-large{
-        color: #fff257;
+        color: #ffe05f;
         text-shadow: #333 1px 1px 2px;
         font-weight: bold;
         font-size: 26px;
         text-align: center;
+        line-height: 1.54;
     }
 
     iframe{

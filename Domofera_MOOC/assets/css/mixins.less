@@ -447,12 +447,12 @@
   border: 1px solid @bd-color1;
 }
 
-.bt-color-tolight(@color){
+.bt-color-todark(@color){
     @c: saturate(@color,4%);
     .bt-color-tocolor(screen(@color, #191919), multiply(@c, #dfdfdf));
 }
 
-.bt-color-todark(@color){
+.bt-color-tolight(@color){
     @c: saturate(@color,4%);
     .bt-color-tocolor( multiply(@c, #dfdfdf) ; screen(@color, #191919));
 }
@@ -480,6 +480,12 @@
 .bt-l(){
     padding: @mp-both-l;
     .fn-relative(15);
+}
+
+.bt-xl(){
+    padding: @mp-both;
+    .fn-relative(18);
+    line-height: 2.7;
 }
 
 

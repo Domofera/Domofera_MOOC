@@ -3,6 +3,23 @@
 
 
 //********************************** TABLET
+@media (min-width: (@tam-tablet - 1)) and (max-width: 860px)
+{
+    
+    #gcb-nav-x{
+        .container-fluid{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        li a{
+            padding: 10px 11px;
+        }
+    }
+    
+    
+}
+
 @media (max-width: @tam-tablet)
 {
     div[class^="gcb-col-"], aside[class^="gcb-col-"]{
@@ -10,12 +27,19 @@
         float: none;
     }
 
-    .jumbotron{
-
+    .spot{
         .gcb-bio-headers{
             float:none;
             text-align: center;
         }
     }
+    
+    #gcb-header .gcb-pull-right{
+        font-size: small !important;
+        float: none;
+        display: block;
+        clear: both;
+    }
 
 }
+

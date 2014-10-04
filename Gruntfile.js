@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         less: {
             build_less:{
                 options: {
-                    cleancss: true // cambiar a true para Produccion
+                    cleancss: false // cambiar a true para Produccion
                 },
                 files: [
                     {
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
             build: {
                 files: {
                     //'Domofera_MOOC/assets/css/main.css': [ 'Domofera_MOOC/assets/css/*.css' ]
-                    'Domofera_MOOC/assets/css/main.css': [ 'Domofera_MOOC/assets/css/others/reset.css', 'Domofera_MOOC/assets/css/others/previo.css', 'Domofera_MOOC/assets/css/main.css', 'Domofera_MOOC/assets/css/responsive.css' ]
+                    'Domofera_MOOC/assets/css/main.css': [ 'Domofera_MOOC/assets/css/others/reset.css', 'Domofera_MOOC/assets/css/others/previo.css', 'Domofera_MOOC/assets/css/bootstrap.min.css', 'Domofera_MOOC/assets/css/bootstrap-theme.min.css', 'Domofera_MOOC/assets/css/main.css', 'Domofera_MOOC/assets/css/responsive.css' ]
                 }
             }
         },
