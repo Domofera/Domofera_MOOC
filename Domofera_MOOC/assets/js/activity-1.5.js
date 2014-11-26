@@ -54,6 +54,7 @@ var activity = [
 ];
 
 
+
 // Note that the following code (that is not part of the definition of the
 // 'activity' variable) needs to be surrounded with the commented tags
 // '// <gcb-no-verify>' and '// </gcb-no-verify>', so that the verifier script

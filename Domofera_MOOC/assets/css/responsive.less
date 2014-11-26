@@ -13,7 +13,7 @@
         }
         
         li a{
-            padding: 10px 11px;
+            padding: 15px 11px;
         }
     }
     
@@ -22,6 +22,12 @@
 
 @media (max-width: @tam-tablet)
 {
+    
+    .clear-tab{
+        display: block;
+        clear: both;
+    }
+
     div[class^="gcb-col-"], aside[class^="gcb-col-"]{
         width: 100%;
         float: none;
@@ -34,12 +40,144 @@
         }
     }
     
-    #gcb-header .gcb-pull-right{
-        font-size: small !important;
-        float: none;
-        display: block;
-        clear: both;
+    #gcb-header
+    {
+        margin: 15px;    
+    
+        .gcb-aux{
+            text-align: center;
+        }
+        
+        .gcb-pull-right{
+            font-size: small !important;
+            float: none;
+            display: block;
+            clear: both;
+        }
+        
+        #login{
+            float: none;
+            margin-top: 11px;
+        }
+    }
+    
+    nav#gcb-nav-y 
+    { 
+        float:none;
+        width: 96%;
+        padding: 0 2%;
+        overflow: hidden;
+        
+        .navbar-header
+        { 
+            background: @cl-nav;
+            
+            .navbar-toggle{
+                border-color: multiply(@cl-nav-toogle, #eee);
+                background: @cl-nav-toogle-bg;
+                transition: all 0.2s ease;
+                &:hover{
+                    background: multiply(@cl-nav-toogle-bg, #eee); 
+                }
+                
+                .icon-bar{
+                    background-color: @cl-nav-toogle;
+                }
+            }
+            
+            .navbar-brand{
+                height: auto;
+                cursor: default;
+                color: white;
+            } 
+        }
+        
+        ul.nav.navbar-nav{ 
+            background: @cl-nav-ul;
+            
+            & li{
+                margin: 0 2px;
+                padding: 0;
+                a, &.active div{
+                    display: block;
+                    padding: 10px 8px;
+                }
+                
+                ul{
+                    a, li.active div{ padding: 8px 10px 8px 25px; }
+                }
+            }
+            
+            & li.active>div{
+                padding: 7px 0;
+                font-size: 15px;
+            }
+            
+            &>li:last-child{
+                border-bottom: none;
+            }
+        
+            &>li
+            {   
+                a{ 
+                    font-size: 15px;
+                    color: @cl-nav-a;
+                    display: block;
+                    width: 100%;
+                }
+                
+                ul{
+                    margin: 0;
+                    
+                    li{ border-bottom: none; }
+                }
+            }
+        }
+    }
+    
+    #gcb-nav-y+.gcb-article
+    { 
+        float:none;
+        width: 100%;
+        
+        #lessonNotesLink{
+            margin-right: 19px;
+        }
     }
 
 }
+
+@media (min-width: (@tam-tablet + 1))
+{
+    .box .profesor{
+        >img{ display: inline-block; float: left; }
+    }
+}
+
+
+@media (min-width: 992px) { 
+
+    .gcb-aux{
+        width: 90%;
+        max-width: 1050px;
+    }
+}
+
+
+@media (min-width: 1200px) { 
+
+    .gcb-aux{
+        width: 85%;
+        max-width: 1400px;
+    }
+}
+
+
+
+
+
+
+
+
+
 

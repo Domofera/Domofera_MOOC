@@ -36,16 +36,14 @@
 
 {% block main_content %}
     <div style="margin-top: 20px;" class="gcb-cols">
-      <div class="gcb-col-1">
-      </div>
-      <div class="gcb-col-9">
-
-        <h1 class="gcb-schedule-headers">
-          {# I18N: This should be interpreted as a noun. It is the title for the course schedule on the main contents page. #}
-          {{ gettext('Schedule') }}
-        </h1>
-        <div id="gcb-main" role="main">
-          <div style="width: 100%;" class="gcb-nav" id="gcb-nav-y">
+        <div id="gcb-main" class="container-fluid" role="main">
+         
+         <!-- GCB Nav -->
+          <div class="gcb-nav col-sm-5 box" id="gcb-nav-y">
+            <h3>
+              {# I18N: This should be interpreted as a noun. It is the title for the course schedule on the main contents page. #}
+              {{ gettext('Schedule') }}
+            </h3>
             <ul>
               {% for unit in units %}
                 {% if unit.now_available or is_course_admin %}
@@ -170,8 +168,34 @@
               {% endfor %}
             </ul>
           </div>
+          <!-- End GCB Nav -->
+          
+          <div class="col-sm-5 box col-sm-offset-2">
+              <a href="http://domofera.com" target="_blank"><img src="assets/img/domofera.png" alt="Domofera"></a>
+              <!-- <h3>Domofera</h3> -->
+              <p>Este MOOC pertenece al equipo Domofera. Si quieres más información puedes visitar la web de Domofera.</p>
+              <a href="http://domofera.com" target="_blank" class="btn-black-orange btn-m">Web Domofera</a>
+          </div>
+          
+          <div class="col-sm-5 pull-right box">
+              <h3>Profesores</h3>
+              
+              <div class="profesor"> 
+                  <img class="img-circle" src="assets/img/laura.jpg" alt="Laura">
+                  <h4>Laura Bonmatí</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia recusandae placeat beatae deleniti voluptate rerum repellendus, alias dicta nostrum dolores enim .</p>
+              </div>
+              
+              <hr>
+              
+              <div class="profesor">
+                  <img class="img-circle" src="assets/img/elena.jpg" alt="Laura">
+                  <h4>Elena Torró</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia recusandae placeat beatae deleniti voluptate rerum repellendus, alias dicta nostrum dolores enim .</p>
+              </div>
+              
+          </div>
+          
         </div>
-
-      </div>
     </div>
 {% endblock %}

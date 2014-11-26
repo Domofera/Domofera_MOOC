@@ -29,6 +29,8 @@ var activity = [
           ['D', false, '"D" is wrong, try again.']
     ]
   },
+    
+    '<p>This is just some <i>HTML</i> text!</p>',
 
   // here is a regex-validating question that requires you to type in the answer
   { questionType: 'freetext',

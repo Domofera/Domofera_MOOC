@@ -1,6 +1,4 @@
 //********* MIXINS *******//
-@import url("variables.less");
-
 
 //*** FUENTES ***//
 .fn-relative(@tam){   ////rem o em(en su defecto)
@@ -50,8 +48,29 @@
      text-decoration: underline;
      color: screen(@color, #222); ////aclarea
    }
-
 }
+
+.fn-load(@family){
+    @font-face{
+        font-family: @family;
+        src:url('../fonts/@{family}.eot');
+        src:url('../fonts/@{family}.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/@{family}.woff') format('woff'),
+            url('../fonts/@{family}.ttf') format('truetype'),
+            url('../fonts/@{family}.svg#icon') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+.use-roboto(){
+    font-family: Roboto-Regular, @fn-family-sans-serif;
+}
+
+.use-roboto-light(){
+    font-family: Roboto-Light, @fn-family-sans-serif;
+}
+
 
 
 
@@ -221,9 +240,9 @@
 
 
 //**** IMAGENES *****//
-.img-responsive(@w: 100%; @maxwidth: none){
+.img-responsive(@w: 100%; @max-width: none){
   width: @w;
-  max-width: @maxwidth;
+  max-width: @max-width;
 }
 
 ////esta hace que no sobrepase un límite, pero no define el width (util para iconos p.e.)
@@ -449,12 +468,12 @@
 
 .bt-color-todark(@color){
     @c: saturate(@color,4%);
-    .bt-color-tocolor(screen(@color, #191919), multiply(@c, #dfdfdf));
+    .bt-color-tocolor(screen(@color, #111), multiply(@c, #dfdfdf));
 }
 
 .bt-color-tolight(@color){
     @c: saturate(@color,4%);
-    .bt-color-tocolor( multiply(@c, #dfdfdf) ; screen(@color, #191919));
+    .bt-color-tocolor( multiply(@c, #eee) ; screen(@color, #191919));
 }
 
 .bt-color-white(@color:#fafafa; @fn-col:#000){

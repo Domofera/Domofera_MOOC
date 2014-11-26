@@ -411,7 +411,7 @@ function generateFreetextQuestion(params, domRoot, index) {
   // then don't generate a 'Check Answer' button.
   // 'showAnswerOutput' is what to display when the user clicks the 'Skip &
   // Show Answer' button (if null, then don't display that option).
-  var correctAnswerRegex = params.correctAnswerRegex;
+  var correctAnswerRegex = params.correctAnswerString;
   var correctAnswerOutput = params.correctAnswerOutput;
   var incorrectAnswerOutput = params.incorrectAnswerOutput;
   var showAnswerOutput = params.showAnswerOutput;
@@ -425,7 +425,7 @@ function generateFreetextQuestion(params, domRoot, index) {
 
   domRoot.append(
       '&nbsp;&nbsp;<input type="text" style="width: 400px; ' +
-      'class="alphanumericOnly" id="input_' + tag + '">');
+      'class="alphanumericOnly form-control" id="input_' + tag + '">');
   if (correctAnswerOutput && incorrectAnswerOutput) {
     domRoot.append('<p/><button class="gcb-button" ' +
         'id="submit_' + tag + '">' + trans.CHECK_ANSWER_TEXT + '</button>');
@@ -461,7 +461,9 @@ function generateFreetextQuestion(params, domRoot, index) {
       textValue = textValue.replace(/^\s+/,''); //trim leading spaces
       textValue = textValue.replace(/\s+$/,''); //trim trailing spaces
 
-      var isCorrect = correctAnswerRegex.test(textValue);
+	  console.log(textValue);
+
+      var isCorrect = (correctAnswerRegex == textValue);
       gcbActivityAudit({
           'index': index, 'type': 'activity-freetext', 'value': textValue,
           'correct': isCorrect})
@@ -586,8 +588,8 @@ function renderAssessment(assessment, domRoot) {
       } else {
         curLI.append('Answer:&nbsp;&nbsp;');
 
-        var inputField = $('<input type="text" class="alphanumericOnly" ' +
-            'style="border-style: solid; border-color: black; border-width: 1px;" ' +
+          var inputField = $('<input type="text" class="alphanumericOnly form-control" ' +
+            ' ' +
             'id="q' + questionNum + '" size="50">');
         if (savedAnswer !== null) {
           inputField.val(savedAnswer);
@@ -612,7 +614,7 @@ function renderAssessment(assessment, domRoot) {
       domRoot.append(
           '<button type="button" class="gcb-button" id="checkAnswersBtn">' +
           trans.CHECK_ANSWERS_TEXT + '</button><p/>');
-      domRoot.append('<p/><textarea style="width: 600px; height: 120px;" ' +
+      domRoot.append('<p/><textarea class="form-control" style="width:650px; height: 120px;" ' +
           'readonly="true" id="answerOutput"></textarea>');
     }
     var buttonText = trans.SUBMIT_ANSWERS_TEXT;

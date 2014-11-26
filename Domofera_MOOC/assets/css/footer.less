@@ -1,0 +1,41 @@
+/*************    FOOTER  *****************/
+
+#gcb-footer
+{ 
+    background: @cl-footer-bg;
+    
+    #gcb-footer-local
+    {
+        border: none;
+    }
+    
+    #gcb-footer-global
+    {
+        border: none;
+        padding: 15px;
+        
+        h3{
+            font-size: 21px;
+            color: @cl-footer-h3;
+        }
+        
+        ul{
+            margin-left: 10px;
+            padding-bottom: 15px;
+            
+            li{
+                display: block;
+                font-size: 14px;
+            }
+        }
+        
+        a{
+            color: @cl-footer-a;
+            transition: all 0.15s ease;
+
+            &:hover, &:focus{ 
+                color: @cl-footer-a-hover;
+            }
+        }
+    }
+}

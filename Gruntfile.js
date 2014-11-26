@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'Domofera_MOOC/assets/css/',
-                        src: ['*.less', 'others/*.less'],
+                        src: 'main.less',
                         dest: 'Domofera_MOOC/assets/css',
                         ext: '.css'
                     }
@@ -47,14 +47,6 @@ module.exports = function(grunt) {
                 cwd: 'Domofera_MOOC',
                 src: [ '**/*.css' ],
                 dest: 'Domofera_MOOC/'
-            }
-        },
-        cssmin: {
-            build: {
-                files: {
-                    //'Domofera_MOOC/assets/css/main.css': [ 'Domofera_MOOC/assets/css/*.css' ]
-                    'Domofera_MOOC/assets/css/main.css': [ 'Domofera_MOOC/assets/css/others/reset.css', 'Domofera_MOOC/assets/css/others/previo.css', 'Domofera_MOOC/assets/css/bootstrap.min.css', 'Domofera_MOOC/assets/css/bootstrap-theme.min.css', 'Domofera_MOOC/assets/css/main.css', 'Domofera_MOOC/assets/css/responsive.css' ]
-                }
             }
         },
         
@@ -77,13 +69,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    //grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-newer');
     
     
     // define the tasks
-    grunt.registerTask('estilos', [ 'less:build_less', 'autoprefixer', 'cssmin' ]); //, 'clean:stylesheets'
+    grunt.registerTask('estilos', [ 'less:build_less', 'autoprefixer']); //, 'clean:stylesheets'
    // grunt.registerTask('scripts', [ 'uglify', 'clean:scripts' ]);
     grunt.registerTask('compilar', [ 'estilos']); // 'clean:build' , 'copy' ,
     

@@ -44,7 +44,7 @@ var activity = [
               ['splenda.com', false, 'Try again. You are looking for the name server or the domain server for splenda.com.']]},
 
   // in this custom question type, the user writes a reply and then clicks on the output textarea to see feedback:
-  '<p><b>2.</b>  Based on the information you found in question one, what company owns Splenda?<br><input type="text" class="alphanumericOnly" style="border:1px solid black;" id="txtbox1" onBlur="show54_2()"></p><p><font color="gray">Click here to see feedback</font><br><textarea style="width: 600px; height: 15px;" readonly="true"  id="output2"></textarea></p>',
+    '<p><b>2.</b>  Based on the information you found in question one, what company owns Splenda?<br><input type="text" class="alphanumericOnly form-control" id="txtbox1" onBlur="show54_2()"></p><p><font color="gray">Click here to see feedback</font><br><textarea style="width: 600px; height: 15px;" readonly="true"  id="output2"></textarea></p>',
 
 ];
 

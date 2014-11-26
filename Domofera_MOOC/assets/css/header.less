@@ -1,45 +1,43 @@
-//********* MIXINS *******//
-@import url("mixins.less");
-
-
-
-
-
-
-// **********  GENERAL   *************/
-
-.gcb-cols{
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.is-wrapper{
-    //padding: 0 15px;
-    width: 100%;
-    //margin-left: -15px;
-}
-
-.centered-in{
-    text-align: center;
-}
-
-
 //**************  HEADER  *****************/
 
-#gcb-header{
-    .gcb-aux{
-        max-width: 1160px;
+#gcb-header{ 
+    
+    width: 100%;
+    overflow: hidden;
+    
+    #login{
+        float: right;
+        margin-top: 17px;
+        .bt-l;
+        .btn-orange;
+    }
+    
+    #dm-email{
+        display: inline-block;
+        margin: 20px 20px 0 0;
     }
 }
 
-.navbar-default
+#logo>img{
+    width: 100%;
+    max-width: 260px;
+}
+
+#gcb-nav-x.navbar-default
 { 
-    @color-navbar: #0c96b6;
-    
-    background: @color-navbar;
+    background: @cl-navbar;
     border: none;
     border-radius: 0;
+    margin-bottom: 0;
+    
+    .container-fluid{
+        padding: 0;
+    }
+    
+    #d-inner-nav{
+        padding: 0;
+        width: 100%;
+    }
     
     ul.nav{
         width: 100%;
@@ -57,11 +55,11 @@
     
     .navbar-toggle{
         border-color: #fff;
-        background: @color-navbar;
+        background: @cl-navbar;
         transition: all 0.3s ease;
         
         &:hover, &:focus{
-            background: multiply(@color-navbar, #ddd);
+            background: multiply(@cl-navbar, #ddd);
         }
         .icon-bar{
             background-color: #fff;
@@ -72,14 +70,13 @@
         &>li>a{ 
             .transition(0.3s);
             &:hover, &:focus{
-                background-color: multiply(@color-navbar, #ddd);
+                background-color: multiply(@cl-navbar, #ddd);
             }
         }
         
-        &>.active>a{
+        &>.active>a{ 
             &, &:hover, &:focus{
-                color: #555;
-                background-color: multiply(@color-navbar, #ddd);
+                background-color: multiply(@cl-navbar, #ddd);
                 background-image: none;
             }
         }
@@ -102,7 +99,6 @@
     padding: 15px 15px 0 15px;
     color: white;
     text-shadow: #555 1px 1px 2px;
-    margin-left: -15px;
     box-shadow: #555 0 0 10px 1px inset;
 
     a.gcb-button-large{
@@ -126,8 +122,3 @@
         max-width: 520px;
     }
 }
-
-
-
-
-

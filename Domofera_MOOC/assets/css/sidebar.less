@@ -1,0 +1,65 @@
+/*************   SIDEBAR   ***************/
+nav#gcb-nav-y 
+{ 
+    background: @cl-bg;
+    width: 16%;
+    float: left;
+    margin: 0;
+    margin-bottom: 20px;
+    box-shadow: none;
+    border: none;
+    
+    ul.nav{ overflow: hidden; }
+    
+    #nav-lat{
+        text-align: left;
+    }
+    
+    .container-fluid,#nav-lat{
+        padding: 0;
+    }
+    
+    .navbar-nav>li{
+        float: none;
+    }
+    
+    .nav-lat-header{
+        color: white;
+        background: @cl-nav;
+        padding: 8px 0;
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    li{
+        font-size: 14px;
+        a, &.active div{
+            display: block;
+            transition: all 0.15s ease;
+            padding: 10px 8px;
+            //background: #f9f9f9;
+            border-bottom: 1px solid #d0d0d0;
+        }
+        
+        &.active>ul div{
+            padding: 0;
+            border-bottom: none;
+        }
+        
+        a:hover{
+            background: @cl-nav-li-hover;
+            text-decoration: none;
+        }
+    }
+    
+    ul ul{
+        a, li.active div{ padding: 8px 10px 8px 25px; }
+    }
+    
+    .gcb-lesson-title-with-progress {
+          margin-left: 0px;
+    }
+    .gcb-activity-title-with-progress {
+          margin-left: 0px;
+    }
+}
