@@ -9705,6 +9705,17 @@ nav#gcb-nav-y .gcb-activity-title-with-progress {
 
 #estadisticas .tab-pane > h3 {
   text-align: center;
+  margin-bottom: 20px;
+}
+
+#estadisticas .tab-pane .table thead th {
+  text-align: center;
+  background: #444;
+  color: white;
+}
+
+#estadisticas .tab-pane .table .nivel2 > td {
+  padding-left: 15px;
 }
 
 /*************    FOOTER  *****************/

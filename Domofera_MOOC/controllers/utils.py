@@ -835,15 +835,46 @@ class StatisticsHandler(BaseHandler):
         
         self.template_value['navbar'] = {'statistics': True}
         
+        #cogemos unidades, lecciones y alumnos
         unidades = self.get_units()
         lecciones = []
+        alumnos = [s for s in Student.all()]
         
+        curso = self.get_course()
+        examenes = curso.get_assessment_list()
+        
+        nota_media_examenes = []
+        total_nota_examenes = []
+        
+        examen_completado_por = {}
+
+        # Cogemos lecciones, y inicializamos examenes
         for unit in unidades:
             lecciones.append(self.get_lessons(unit.unit_id))
+            if unit.type == 'A':
+                examen_completado_por[unit.unit_id] = 0
+        
+        # Calcular cuantos estudiantes han aprobado algo
+        for alumno in alumnos:
+            scores = curso.get_all_scores(alumno)
+            for score in scores:
+                if score['completed'] == True:
+                    examen_completado_por[score['id']] += 1
+                
+        #for asm_id, total_score in total_scores.iteritems():
+        #    total_nota[asm_id] = total_nota / num_examenes[asm_id] #calcula la nota media en un examen
+        
+        logging.info(examen_completado_por)
+            
+        
+        
+        
         
         """Insertamos las variables de estadisticas"""
         self.template_value['units'] = unidades
         self.template_value['lessons'] = lecciones
+        self.template_value['assessments'] = examenes
+        self.template_value['assessment_completed_by'] = examen_completado_por
         
         
         self.render('statistics.html')        
