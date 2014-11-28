@@ -9281,6 +9281,8 @@ body > .is-wrapper {
 
 #next-prev-buttons {
   margin-top: 20px;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 #gcb-header {
@@ -9692,6 +9694,17 @@ nav#gcb-nav-y .gcb-activity-title-with-progress {
 
 .input-300 {
   max-width: 300px;
+}
+
+#estadisticas {
+  border: 1px solid #ddd;
+  margin-top: -1px;
+  border-radius: 4px;
+  padding: 5px 30px;
+}
+
+#estadisticas .tab-pane > h3 {
+  text-align: center;
 }
 
 /*************    FOOTER  *****************/

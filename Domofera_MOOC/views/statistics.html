@@ -32,21 +32,37 @@
           </ul>
 
           <!-- Tab panes -->
-          <div class="tab-content">
+          <div id="estadisticas" class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="alumnos">
-                h3
-                
+                <h3>Alumnos</h3>
+                <div class="stat-content">
+                    
+                </div>
             </div>
             
             
             <div role="tabpanel" class="tab-pane" id="unidades">
-                
-                
+                <h3>Unidades</h3>
+                <div class="stat-content">
+                    {% for unit in units %}
+                       {% if unit.type == 'U' %}
+                        <p><b>{{ unit.unit_id }} - {{ unit.title }}</b></p>
+                            
+                            {% for lesson in lessons[loop.index0] %}
+                            
+                            <p>{{ lesson.title }}</p>
+                            
+                            {% endfor %}
+                        
+                        
+                       {% endif %}
+                    {% endfor  %}
+                </div>
             </div>
             
             
             <div role="tabpanel" class="tab-pane" id="examenes">
-                
+                <h3>Exámenes</h3>
                 
             </div>
           </div>

@@ -835,7 +835,15 @@ class StatisticsHandler(BaseHandler):
         
         self.template_value['navbar'] = {'statistics': True}
         
+        unidades = self.get_units()
+        lecciones = []
+        
+        for unit in unidades:
+            lecciones.append(self.get_lessons(unit.unit_id))
+        
         """Insertamos las variables de estadisticas"""
+        self.template_value['units'] = unidades
+        self.template_value['lessons'] = lecciones
         
         
         self.render('statistics.html')        
