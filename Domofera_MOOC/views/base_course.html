@@ -55,6 +55,9 @@
                 <a href="forum">{{ gettext('Forum') }}</a>
               </li>
             {% endif %}
+            <li {% if navbar.statistics %}class='active'{% endif %}>
+                <a href="statistics">Estadísticas</a>
+            </li>
 
             <!-- right-aligned links are in order -->
             {% if is_super_admin %}

@@ -9176,6 +9176,11 @@ body {
   font-size: 150%;
 }
 
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html,
 body,
 input,
@@ -9535,6 +9540,7 @@ nav#gcb-nav-y .gcb-activity-title-with-progress {
 
 #gcb-main {
   text-align: center;
+  padding-top: 20px;
 }
 
 #gcb-main > .gcb-breadcrumb {
@@ -9678,6 +9684,14 @@ nav#gcb-nav-y .gcb-activity-title-with-progress {
 
 .box hr {
   border-top-color: #ccc;
+}
+
+.form-control {
+  height: auto;
+}
+
+.input-300 {
+  max-width: 300px;
 }
 
 /*************    FOOTER  *****************/

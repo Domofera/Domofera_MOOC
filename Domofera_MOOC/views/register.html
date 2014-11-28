@@ -20,31 +20,40 @@
     <div class="gcb-aside">
 
       <p>
-        {{course_info.reg_form.header_text | safe}}
+        Por favor, rellena el siguiente cuestionario para inscribirte en el curso
       </p>
 
-      <form action="register" method='post'>
+      <form class="form-horizontal" role="form" action="register" method='post'>
         <input type="hidden" name="xsrf_token" value="{{ register_xsrf_token|escape }}">
-        <fieldset>
-          <ol>
-            <li>
-              <label class="gcb-reg-form-label" for="form01">
-                {# I18N: A question in the registration form. #}
-                {{ gettext('What is your name?') }}
-              </label>
-              {# I18N: A question in the registration form. #}
-              <input
-                name="form01" id="form01" type="text"
-                value="{{ current_name|escape }}"
-                aria-label="{{ gettext('What is your name?') }}">
-            </li>
-            {% if course_info.reg_form.additional_registration_fields %}
-              {{course_info.reg_form.additional_registration_fields | safe}}
-            {% else %}
-              <!-- reg_form.additional_registration_fields -->
-            {% endif %}
-          </ol>
-        </fieldset>
+        
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Nombre</label>
+            <div class="col-sm-10">
+               <input name="name" id="form01" type="text" class="form-control" placeholder="Nombre..." aria-label="Nombre">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
+            <div class="col-sm-10">
+               <input name="apellidos" id="apellidos" type="text" class="form-control" placeholder="Apellidos..." aria-label="Apellidos">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="ciudad" class="col-sm-2 control-label">Ciudad</label>
+            <div class="col-sm-10">
+               <input name="ciudad" id="ciudad" type="text" class="form-control" placeholder="Ciudad..." aria-label="Ciudad">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="pais" class="col-sm-2 control-label">Pais</label>
+            <div class="col-sm-10">
+               <input name="pais" id="pais" type="text" class="form-control" placeholder="Pais..." aria-label="Ciudad">
+            </div>
+        </div>
+        
 
         <button class="gcb-button" type="submit">
           {# I18N: Button at the end of the registration form for a course. #}

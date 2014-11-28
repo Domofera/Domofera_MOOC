@@ -23,6 +23,10 @@ body{
     font-size: 150%;
 }
 
+*{
+    box-sizing: border-box;
+}
+
 // Fonts
 html, body, input, textarea, h3, h4, h5, h6, li, a, p{
     font-family: @fn-family-sans-serif;
@@ -89,8 +93,8 @@ body>.is-wrapper{
 
 #next-prev-buttons{
     margin-top: 20px;
+    box-sizing: content-box;
 }
-
 
 
 
@@ -108,7 +112,7 @@ body>.is-wrapper{
 
 #gcb-main{ 
     text-align: center;
-    
+    padding-top: 20px;
     
     >.gcb-breadcrumb{
         display: inline-block;
@@ -227,7 +231,14 @@ body>.is-wrapper{
 }
 
 
+//************* REGISTRO  ****************/
+.form-control{
+    height: auto;
+}
 
+.input-300{
+    max-width: 300px;
+}
 
 
 @import url("footer.less");

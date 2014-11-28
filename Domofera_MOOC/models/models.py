@@ -31,6 +31,10 @@ from google.appengine.api import namespace_manager
 from google.appengine.api import users
 from google.appengine.ext import db
 
+import json
+
+
+
 # We want to use memcache for both objects that exist and do not exist in the
 # datastore. If object exists we cache its instance, if object does not exist
 # we cache this object below.
@@ -536,6 +540,51 @@ class Student(BaseEntity):
         StudentProfileDAO.update(
             student.user_id, student.email, nick_name=new_name)
 
+    @classmethod
+    def update_apellidos(cls, new_apellidos):
+        """Gives student a new name."""
+        _, student = cls._get_user_and_student()
+        dict_aux = dict(json.loads(student.additional_fields))
+        dict_aux['apellidos'] = new_apellidos;
+        
+        lista_aux = []
+        
+        for key, value in dict_aux.iteritems():
+            lista_aux.append([key, value])
+        
+        student.additional_fields = json.dumps(lista_aux)
+        student.put()
+        
+    @classmethod
+    def update_ciudad(cls, new_ciudad):
+        """Gives student a new name."""
+        _, student = cls._get_user_and_student()
+        dict_aux = dict(json.loads(student.additional_fields))
+        dict_aux['ciudad'] = new_ciudad;
+        
+        lista_aux = []
+        
+        for key, value in dict_aux.iteritems():
+            lista_aux.append([key, value])
+        
+        student.additional_fields = json.dumps(lista_aux)
+        student.put()
+    
+    @classmethod
+    def update_pais(cls, new_pais):
+        """Gives student a new name."""
+        _, student = cls._get_user_and_student()
+        dict_aux = dict(json.loads(student.additional_fields))
+        dict_aux['pais'] = new_pais;
+        
+        lista_aux = []
+        
+        for key, value in dict_aux.iteritems():
+            lista_aux.append([key, value])
+        
+        student.additional_fields = json.dumps(lista_aux)
+        student.put()
+        
     @classmethod
     def set_enrollment_status_for_current(cls, is_enrolled):
         """Changes student enrollment status."""
