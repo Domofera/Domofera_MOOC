@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block subtitle %}
-  Subtitulo
+  Estadísticas
 {% endblock subtitle %}
 
 {% block top_content %}
@@ -50,7 +50,7 @@
                         <thead>
                           <tr>
                             <th>Unidad / Lección</th>
-                            <th>Alumnos que la han completado</th>
+                            <th>Completado por</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -94,7 +94,7 @@
                           {% for assessment in assessments %}
                               <tr>
                                 <td><b>{{ assessment.title }}</b></td>
-                                <td>X alumnos</td>
+                                <td>{{ assessment_average[assessment.unit_id] / 10 }} / 10</td>
                                 <td>{{ assessment_completed_by[assessment.unit_id] }} alumnos</td>
                               </tr>
                           {% endfor  %}

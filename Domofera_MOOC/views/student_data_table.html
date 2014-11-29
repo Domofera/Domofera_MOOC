@@ -1,54 +1,52 @@
-<table class="gcb-student-data-table">
-  <colgroup>
-    <col style="width: 10%">
-    <col>
-  </colgroup>
+<table class="table profile-table">
 
   <tr>
     {# I18N: Table header that states when a student enrolled in a course. #}
-    <th align="left">{{ gettext('Date enrolled') }}</th>
+    <td>{{ gettext('Date enrolled') }}</td>
     <td>{{ date_enrolled }}</td>
   </tr>
 
   <tr>
     {# I18N: Table header for the student's email address. This is a noun. #}
-    <th align="left">{{ gettext('Email') }}</th>
+    <td>{{ gettext('Email') }}</td>
     <td>{{ student.key().name() }}</td>
   </tr>
 
   <tr>
       
     {# I18N: Table header for the student's name. #}
-    <th align="left">{{ gettext('Name') }}</th>
+    <td>{{ gettext('Name') }}</td>
     <td>{{ student_name }}</td>
   </tr>
   
   <tr>
-    <th align="left">Apellidos</th>
+    <td>Apellidos</td>
     <td>{{ apellidos }}</td>
   </tr>
   
   <tr>
-    <th align="left">Ciudad</th>
+    <td>Ciudad</td>
     <td>{{ ciudad }}</td>
   </tr>
 
   <tr>
-    <th align="left">Pais</th>
+    <td>Pais</td>
     <td>{{ pais }}</td>
   </tr>
+</table>
+  
+<br>
+<h2>Progreso</h2>
+  
+<table class="table profile-table">
 
-
-  <tr>
-    {# I18N: Table header for the student's assessment scores. #}
-    <th align="left" colspan=2>
-      {{ gettext('Assessment scores') }}
-    </th>
-  </tr>
+    <tr>
+        <td colspan="2">Exámenes</td>
+    </tr>
 
   {% for assessment in score_list %}
-    <tr>
-      <th align="left">&nbsp;&nbsp;&nbsp;{{ assessment['title'] }}</th>
+    <tr class="nivel2">
+      <td>{{ assessment['title'] }}</td>
       <td>
         {% if assessment['human_graded'] %}
           <a href="assessment?name={{ assessment.id }}">
@@ -61,7 +59,7 @@
             {% endif %}
           </a>
         {% elif 'score' in assessment and assessment['score'] is defined %}
-          <span id="assessment-score-{{assessment['title']}}">{{ assessment['score'] }}</span>
+          <span id="assessment-score-{{assessment['title']}}">{{ assessment['score'] / 10 }} / 10</span>
         {% endif %}
       </td>
     </tr>
@@ -70,9 +68,13 @@
   {% if overall_score != None %}
     <tr>
       {# I18N: Table header for the student's overall score. #}
-      <th align="left">{{ gettext('Overall course score') }}</th>
+      <td>Progreso general del curso</td>
       <td>
-        <span id="assessment-score-overall">{{ overall_score }}</span>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100" style="width: {{ overall_score }}%;">
+            {{ overall_score }}%
+          </div>
+        </div>
       </td>
     </tr>
   {% endif %}

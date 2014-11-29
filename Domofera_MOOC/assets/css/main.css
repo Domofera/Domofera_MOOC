@@ -9708,14 +9708,30 @@ nav#gcb-nav-y .gcb-activity-title-with-progress {
   margin-bottom: 20px;
 }
 
-#estadisticas .tab-pane .table thead th {
+.table thead th {
   text-align: center;
   background: #444;
   color: white;
 }
 
-#estadisticas .tab-pane .table .nivel2 > td {
-  padding-left: 15px;
+.table tr.nivel {
+  background: #f0f0f0;
+}
+
+.table tr.nivel2 > td {
+  padding-left: 40px;
+}
+
+.table.profile-table tr > td:first-child {
+  font-weight: bold;
+}
+
+h2 {
+  margin: 5px auto 25px auto;
+}
+
+.progress {
+  margin-bottom: 0;
 }
 
 /*************    FOOTER  *****************/

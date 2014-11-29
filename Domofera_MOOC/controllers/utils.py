@@ -845,6 +845,8 @@ class StatisticsHandler(BaseHandler):
         
         nota_media_examenes = []
         total_nota_examenes = []
+        media_examen = {}
+        count_scores = {}
         
         examen_completado_por = {}
 
@@ -853,20 +855,39 @@ class StatisticsHandler(BaseHandler):
             lecciones.append(self.get_lessons(unit.unit_id))
             if unit.type == 'A':
                 examen_completado_por[unit.unit_id] = 0
+                media_examen[unit.unit_id] = 0
         
-        # Calcular cuantos estudiantes han aprobado algo
+        
+    # **** EXAMENES
+        
+        # Calcular cuantos estudiantes han aprobado un examen
         for alumno in alumnos:
             scores = curso.get_all_scores(alumno)
             for score in scores:
                 if score['completed'] == True:
                     examen_completado_por[score['id']] += 1
                 
-        #for asm_id, total_score in total_scores.iteritems():
-        #    total_nota[asm_id] = total_nota / num_examenes[asm_id] #calcula la nota media en un examen
-        
-        logging.info(examen_completado_por)
+        # Calcular nota media de un examen
+        """ SIEMPRE SALE 0, COMPROBAR!!!!!!!!!! """    
+        for alumno in alumnos:
+            logging.info(alumno.name)
+            if alumno.name == 'a':
+                for unit in unidades:
+                    if unit.type == 'U':
+                        logging.info(curso.get_progress_tracker().get_lesson_progress(alumno, unit.unit_id))
             
-        
+
+        for s in alumnos:
+            scores = json.loads(s.scores) if s.scores else {} #puntuaciones de un usuario
+            for asm_id, asm_score in scores.iteritems(): #para cada examen que ha realizado
+                media_examen[asm_id] = media_examen.get(asm_id, 0) + asm_score
+                count_scores[asm_id] = count_scores.get(asm_id, 0) + 1
+
+        #logging.info(media_examen)
+                
+        for asm_id, total_score in media_examen.iteritems():
+            if total_score > 0:
+                media_examen[asm_id] = total_score / count_scores[asm_id] #calcula la nota media en un examen
         
         
         
@@ -874,6 +895,7 @@ class StatisticsHandler(BaseHandler):
         self.template_value['units'] = unidades
         self.template_value['lessons'] = lecciones
         self.template_value['assessments'] = examenes
+        self.template_value['assessment_average'] = media_examen
         self.template_value['assessment_completed_by'] = examen_completado_por
         
         
