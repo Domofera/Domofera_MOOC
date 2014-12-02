@@ -44,6 +44,7 @@ from google.appengine.api import users
 
 import json
 import logging
+import datetime
 import collections
 
 # The name of the template dict key that stores a course's base location.
@@ -837,67 +838,100 @@ class StatisticsHandler(BaseHandler):
         
         #cogemos unidades, lecciones y alumnos
         unidades = self.get_units()
-        lecciones = []
         alumnos = [s for s in Student.all()]
-        
         curso = self.get_course()
-        examenes = curso.get_assessment_list()
         
-        nota_media_examenes = []
-        total_nota_examenes = []
+        # dicceionarios auxliares para calculos intermedios
         media_examen = {}
-        count_scores = {}
+        count_examen = {}
+        examen_completado = {}
         
-        examen_completado_por = {}
+    #**** VARIABLES FINALES
+        units = []
+        assessments = []
+        students = { 'total': 0, 'last_week': 0, 'last_month': 0 }
+        
 
-        # Cogemos lecciones, y inicializamos examenes
+    #**** UNIDADES Y LECCIONES
+    
+        # Creamos estructura de unidades > lecciones para posteriormente realizar tracking de alumnos
+        
         for unit in unidades:
-            lecciones.append(self.get_lessons(unit.unit_id))
-            if unit.type == 'A':
-                examen_completado_por[unit.unit_id] = 0
-                media_examen[unit.unit_id] = 0
-        
-        
-    # **** EXAMENES
-        
-        # Calcular cuantos estudiantes han aprobado un examen
-        for alumno in alumnos:
-            scores = curso.get_all_scores(alumno)
-            for score in scores:
-                if score['completed'] == True:
-                    examen_completado_por[score['id']] += 1
+            if unit.type == 'U': # si es unidad, cogemos actividades y creamos objeto
                 
-        # Calcular nota media de un examen
-        """ SIEMPRE SALE 0, COMPROBAR!!!!!!!!!! """    
-        for alumno in alumnos:
-            logging.info(alumno.name)
-            if alumno.name == 'a':
-                for unit in unidades:
-                    if unit.type == 'U':
-                        logging.info(curso.get_progress_tracker().get_lesson_progress(alumno, unit.unit_id))
+                lecciones = curso.get_lessons(unit.unit_id)
+                my_lessons = []
+                
+                for lesson in lecciones:
+                    my_lessons.append({'id': lesson.lesson_id, 'title': lesson.title, 'students': 0})
+                    
+                units.append({ 'id': int(unit.unit_id), 'title': unit.title, 'students': 0, 'lessons': my_lessons })
             
-
-        for s in alumnos:
-            scores = json.loads(s.scores) if s.scores else {} #puntuaciones de un usuario
-            for asm_id, asm_score in scores.iteritems(): #para cada examen que ha realizado
-                media_examen[asm_id] = media_examen.get(asm_id, 0) + asm_score
-                count_scores[asm_id] = count_scores.get(asm_id, 0) + 1
-
-        #logging.info(media_examen)
+            if unit.type == 'A':
+                assessments.append({ 'id': unit.unit_id, 'title': unit.title, 'studentsCompleted': 0, 'studentsDone': 0, 'average': 0})
+        
+        
+        
+    #**** ALUMNOS
+        
+        count_alumnos = len(alumnos)
+        alumnos_week = 0
+        alumnos_month = 0
+        
+        last_week = datetime.datetime.now() - datetime.timedelta(days=7)
+        last_month = datetime.datetime.now() - datetime.timedelta(days=30)
+        
+        for alumno in alumnos:
+            
+            students['total'] += 1
+            if alumno.enrolled_on >= last_week:
+                students['last_week'] += 1 
+            if alumno.enrolled_on >= last_month:
+                students['last_month'] += 1 
+            
+            # Scores del alumno
+            scores = curso.get_all_scores(alumno)
+            
+            for score in scores: # hacemos conteos y acumulaciones para las notas medias
+                if score['completed'] == True:
+                    examen_completado[score['id']] = examen_completado.get(score['id'], 0) + 1
+                    
+                media_examen[score['id']] = media_examen.get(score['id'], 0) + score['score']
+                count_examen[score['id']] = count_examen.get(score['id'], 0) + 1
                 
-        for asm_id, total_score in media_examen.iteritems():
-            if total_score > 0:
-                media_examen[asm_id] = total_score / count_scores[asm_id] #calcula la nota media en un examen
+            # Tracking del alumno
+            for unit in units:
+                tracker = curso.get_progress_tracker()
+                progress = tracker.get_or_create_progress(alumno)
+
+                lecciones_hechas = 0
+                lecciones_total = 0
+
+                for lesson in unit['lessons']:
+                    lecciones_total += 1
+
+                    if(tracker.get_html_status(progress, unit['id'], lesson['id'])): #lección hecha
+                        lecciones_hechas += 1
+                        lesson['students'] += 1
+
+                if(lecciones_hechas == lecciones_total):
+                    unit['students'] += 1
+                
+                
+        # Calculamos las notas medias
+        for asm in assessments:
+            if(media_examen[asm['id']] > 0):
+                asm['average'] = media_examen[asm['id']] / count_examen[asm['id']]
+    
+            asm['studentsCompleted'] = examen_completado.get(asm['id'], 0)
         
         
         
         """Insertamos las variables de estadisticas"""
-        self.template_value['units'] = unidades
-        self.template_value['lessons'] = lecciones
-        self.template_value['assessments'] = examenes
-        self.template_value['assessment_average'] = media_examen
-        self.template_value['assessment_completed_by'] = examen_completado_por
         
+        self.template_value['units'] = units
+        self.template_value['assessments'] = assessments
+        self.template_value['students'] = students
         
         self.render('statistics.html')        
         

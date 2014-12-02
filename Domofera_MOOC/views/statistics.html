@@ -36,7 +36,24 @@
             <div role="tabpanel" class="tab-pane active" id="alumnos">
                 <h3>Alumnos</h3>
                 <div class="stat-content">
-                    
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Última semana</th>
+                            <th>Último mes</th>
+                            <th>Último total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                              <td>{{ students.last_week }} ({{ students.last_week * 100 / students.total }}%)</td>
+                              <td>{{ students.last_month }} ({{ students.last_month * 100 / students.total }}%)</td>
+                              <td>{{ students.total }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                 </div>
             </div>
             
@@ -55,20 +72,17 @@
                         </thead>
                         <tbody>
                           {% for unit in units %}
-                           {% if unit.type == 'U' %}
                               <tr class="nivel1">
-                                <td><b>{{ unit.unit_id }} - {{ unit.title }}</b></td>
-                                <td>X alumnos</td>
+                                <td><b>{{ unit.id }} - {{ unit.title }}</b></td>
+                                <td>{{ unit.students }} alumnos ({{ unit.students * 100 / students.total }}%)</td>
                               </tr>
                               
-                              {% for lesson in lessons[loop.index0] %}
+                              {% for lesson in unit.lessons %}
                               <tr class="nivel2">
                                 <td>{{ lesson.title }}</td>
-                                <td>X alumnos</td>
+                                <td>{{ lesson.students }} alumnos ({{ lesson.students * 100 / students.total }}%)</td>
                               </tr>
                               {% endfor %}
-                              
-                           {% endif %}
                           {% endfor  %}
                         </tbody>
                       </table>
@@ -94,8 +108,8 @@
                           {% for assessment in assessments %}
                               <tr>
                                 <td><b>{{ assessment.title }}</b></td>
-                                <td>{{ assessment_average[assessment.unit_id] / 10 }} / 10</td>
-                                <td>{{ assessment_completed_by[assessment.unit_id] }} alumnos</td>
+                                <td>{{ assessment.average / 10 }} / 10</td>
+                                <td>{{ assessment.studentsCompleted }} alumnos ({{ assessment.studentsCompleted * 100 / students.total }}%)</td>
                               </tr>
                           {% endfor  %}
                         </tbody>
