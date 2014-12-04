@@ -184,10 +184,10 @@
     {% endif %}
 
     <!-- ButterBar -->
-    <div class="gcb-butterbar-container">
-      <div id="gcb-butterbar-top" class="gcb-butterbar" style="margin-top:50px" aria-live="polite">
+    <div id="gcb-butterbar-cont" class="gcb-butterbar-container">
+      <div id="gcb-butterbar-top" class="gcb-butterbar" aria-live="polite">
         <p id="gcb-butterbar-message"></p>
-        <a id="gcb-butterbar-close">X</a>
+        <a id="gcb-butterbar-close">OK</a>
       </div>
     </div>
 
@@ -209,6 +209,10 @@
             {# I18N: Text shown in parentheses next to the student's email address at the top-right of all course pages, if the student is logged in but not registered for the course he/she is currently browsing. #}
             ({{ gettext('Not registered') }})
           {% endif %}
+          
+          
+          
+          
           </span>
             <a id="login" href="{{ logoutUrl }}">
             {# I18N: Navbar text. #}
@@ -222,6 +226,7 @@
         {% endif %}
       </div>
     </div>
+    
 
     {% block navbar %}
     {% endblock %}

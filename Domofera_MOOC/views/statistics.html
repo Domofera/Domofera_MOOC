@@ -47,8 +47,8 @@
                         </thead>
                         <tbody>
                           <tr>
-                              <td>{{ students.last_week }} ({{ students.last_week * 100 / students.total }}%)</td>
-                              <td>{{ students.last_month }} ({{ students.last_month * 100 / students.total }}%)</td>
+                              <td>{{ students.last_week }} ({{ (students.last_week * 100 / students.total) | round(2, 'floor')}}%)</td>
+                              <td>{{ students.last_month }} ({{ (students.last_month * 100 / students.total) | round(2, 'floor')}}%)</td>
                               <td>{{ students.total }}</td>
                           </tr>
                         </tbody>
@@ -74,13 +74,13 @@
                           {% for unit in units %}
                               <tr class="nivel1">
                                 <td><b>{{ unit.id }} - {{ unit.title }}</b></td>
-                                <td>{{ unit.students }} alumnos ({{ unit.students * 100 / students.total }}%)</td>
+                                <td>{{ unit.students }} alumnos ({{  (unit.students * 100 / students.total) | round(2, 'floor')}}%)</td>
                               </tr>
                               
                               {% for lesson in unit.lessons %}
                               <tr class="nivel2">
                                 <td>{{ lesson.title }}</td>
-                                <td>{{ lesson.students }} alumnos ({{ lesson.students * 100 / students.total }}%)</td>
+                                <td>{{ lesson.students }} alumnos ({{ (lesson.students * 100 / students.total) | round(2, 'floor')}}%)</td>
                               </tr>
                               {% endfor %}
                           {% endfor  %}
@@ -109,7 +109,7 @@
                               <tr>
                                 <td><b>{{ assessment.title }}</b></td>
                                 <td>{{ assessment.average / 10 }} / 10</td>
-                                <td>{{ assessment.studentsCompleted }} alumnos ({{ assessment.studentsCompleted * 100 / students.total }}%)</td>
+                                <td>{{ assessment.studentsCompleted }} alumnos ({{ (assessment.studentsCompleted * 100 / students.total) | round(2, 'floor')}}%)</td>
                               </tr>
                           {% endfor  %}
                         </tbody>

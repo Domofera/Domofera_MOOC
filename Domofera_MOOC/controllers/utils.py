@@ -331,12 +331,21 @@ class BaseHandler(ApplicationHandler):
                 CAN_PERSIST_ACTIVITY_EVENTS.value
             self.template_value['event_xsrf_token'] = \
                 XsrfTokenManager.create_xsrf_token('event-post')
+            
         else:
             self.template_value['loginUrl'] = \
                 users.create_login_url(self.request.uri)
             self.template_value['transient_student'] = True
             return None
 
+        if user is None: # No existe usuario
+            student = TRANSIENT_STUDENT
+        else:
+            if not Student.get_enrolled_student_by_email(user.email()): # loggeado pero no registrado
+                if not self.request.path == '/register':
+                    self.redirect('/register');
+                #return None
+        
         return user
 
     def personalize_page_and_get_enrolled(self,
@@ -344,6 +353,8 @@ class BaseHandler(ApplicationHandler):
         """If the user is enrolled, add personalized fields to the navbar."""
 
         user = self.personalize_page_and_get_user()
+
+        
         if user is None:
             student = TRANSIENT_STUDENT
         else:
@@ -353,12 +364,15 @@ class BaseHandler(ApplicationHandler):
                 self.template_value['transient_student'] = True
                 student = TRANSIENT_STUDENT
 
+                
+        
+                
         if student.is_transient:
             if supports_transient_student \
                 and self.app_context.get_environ()['course']['browsable'
                     ]:
                 return TRANSIENT_STUDENT
-            elif user is None:
+            elif user is None: #
                 self.redirect(users.create_login_url(self.request.uri),
                               normalize=False)
                 return None
@@ -484,6 +498,7 @@ class RegisterHandler(BaseHandler):
         """Handles GET request."""
 
         user = self.personalize_page_and_get_user()
+        
         if not user:
             self.redirect(users.create_login_url(self.request.uri),
                           normalize=False)

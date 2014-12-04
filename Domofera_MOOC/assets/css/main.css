@@ -373,67 +373,83 @@ td {
 /* BUTTER BAR */
 
 .gcb-butterbar-container {
-  position: absolute;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+  position: fixed;
   text-align: center;
-  width: 100%;
+  width: 0;
+  height: 0;
   left: 0px;
   z-index: 999;
-  visibility: hidden;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-.gcb-butterbar-container.fixed {
-  position: fixed;
-}
-
-.gcb-butterbar {
+.gcb-butterbar-container .gcb-butterbar {
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
   text-align: center;
-  padding: 0 16px;
-  background: #FFFFB7;
-  border: 1px solid #BFBA26;
-  margin-bottom: -35px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ccc;
   position: relative;
   display: inline-block;
   opacity: 0;
-  left: -1000%;
+  left: -100%;
+  width: 60%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.gcb-butterbar-container .gcb-butterbar p {
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+.gcb-butterbar-container.shown {
+  width: 100%;
+  height: 100%;
+}
+
+.gcb-butterbar-container.shown .gcb-butterbar {
+  opacity: 1;
+  left: 0;
 }
 
 .gcb-butterbar-dashboard {
   margin-top: 5px;
 }
 
-.gcb-butterbar.shown {
-  opacity: 1;
-  visibility: visible;
-  left: 0;
-}
-
-.gcb-butterbar a,
-.gcb-butterbar p {
-  margin-bottom: 0;
-  margin-top: 0;
-  line-height: 29px;
-  font-size: 11px;
-  display: inline;
-}
-
-.gcb-butterbar a {
-  color: #424027;
-  text-decoration: underline;
-  z-index: 1002;
-  position: relative;
-}
-
 #gcb-butterbar-close {
-  color: #888888;
+  padding: 8px 16px;
+  font-size: 1.5em;
+  font-size: 1.5rem;
+  display: inline-block;
   text-decoration: none;
-  font-weight: bold;
-  margin-left: 5px;
-  font-size: 13px;
-  cursor: default;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  border-radius: 5px;
+  background: #555555;
+  color: #ffffff;
+  border: 1px solid #4b4b4b;
 }
 
-#gcb-butterbar-close:hover {
-  color: #555555;
+#gcb-butterbar-close:hover,
+#gcb-butterbar-close:focus {
+  text-decoration: none;
+}
+
+#gcb-butterbar-close:hover,
+#gcb-butterbar-close:focus {
+  background: #e95d0c;
+  border: 1px solid #d5560b;
+  color: #ffffff;
 }
 
 /* GCB-specific styles. */
@@ -9281,6 +9297,9 @@ body > .is-wrapper {
 
 #next-prev-buttons {
   margin-top: 20px;
+}
+
+#next-prev-buttons a {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }

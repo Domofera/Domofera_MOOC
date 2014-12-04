@@ -1,4 +1,5 @@
-function ButterBar(popup, message, close) {
+function ButterBar(cont, popup, message, close) { 
+  this.cont = cont;
   this.popup = popup;
   this.message = message;
   this.close = close;
@@ -6,8 +7,8 @@ function ButterBar(popup, message, close) {
 ButterBar.prototype.showMessage = function(text) {
   this.message.textContent = text;  // FF, Chrome
   this.message.innerText = text;    // IE
-  if (! $(this.popup).hasClass("shown")) {
-    $(this.popup).addClass("shown");
+  if (! $(this.cont).hasClass("shown")) {
+    $(this.cont).addClass("shown");
   }
   if (this.close != null) {
     this.close.onclick = cbHideMsg;
@@ -15,8 +16,8 @@ ButterBar.prototype.showMessage = function(text) {
   window.onscroll = ButterBar.keepInView;
 };
 ButterBar.prototype.hide = function() {
-  if ($(this.popup).hasClass("shown")) {
-    $(this.popup).removeClass("shown");
+  if ($(this.cont).hasClass("shown")) {
+    $(this.cont).removeClass("shown");
   }
 };
 ButterBar.prototype.setCloseButtonVisible = function(visible) {
@@ -27,9 +28,10 @@ ButterBar.prototype.setCloseButtonVisible = function(visible) {
   }
 }
 ButterBar.getButterBar = function() {
-  return new ButterBar(document.getElementById("gcb-butterbar-top"),
-    document.getElementById("gcb-butterbar-message"),
-    document.getElementById("gcb-butterbar-close"));
+  return new ButterBar(document.getElementById("gcb-butterbar-cont"),
+      document.getElementById("gcb-butterbar-top"),
+      document.getElementById("gcb-butterbar-message"),
+      document.getElementById("gcb-butterbar-close"));
 };
 function cbShowMsg(text) {
   var butterBar = ButterBar.getButterBar();
@@ -55,6 +57,6 @@ ButterBar.keepInView = function() {
   var offset = $(popup).offset().top;
   if (offset - $(document).scrollTop() <= 10) {
     $(container).addClass('fixed');
-    container.style.top = (10 - popup.offsetTop) + "px";
+    //container.style.top = (10 - popup.offsetTop) + "px";
   }
 };
