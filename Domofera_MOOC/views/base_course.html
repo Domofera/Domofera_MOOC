@@ -41,10 +41,6 @@
 
             <!-- left-aligned links in order -->
             {{course_info.base.after_navbar_begins | safe}}
-            <li {% if navbar.announcements %}class='active'{% endif %}>
-              {# I18N: Navbar tab. #}
-              <a href="announcements">{{ gettext('Announcements') }}</a>
-            </li>
             <li {% if navbar.course %}class='active'{% endif %}>
               {# I18N: Navbar tab. #}
               <a href="course">{{ gettext('Course') }}</a>
